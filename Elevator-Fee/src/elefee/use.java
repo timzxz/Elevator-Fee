@@ -23,7 +23,6 @@ public class use {
 	int getstart(){return this.startlevel;}
 	int getend(){return this.endlevel;}
 	int getuselevel(){return this.uselevel;}
-	
 	public void send() throws SQLException,ClassNotFoundException{
 		String url="jdbc:mysql://localhost:3306/eledb";
 		String account="root";
