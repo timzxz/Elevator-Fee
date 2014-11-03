@@ -25,10 +25,10 @@ public class makeinput {
 			tmpline+=" ";
 			tmpline+=df.format(new Date());
 			tmpline+=" ";
-			s=(Math.abs(r.nextInt())%40);
+			s=(Math.abs(r.nextInt())%90);
 			tmpline+=String.valueOf(s);
 			tmpline+=" ";
-			e=(Math.abs(r.nextInt())%80);
+			e=(Math.abs(r.nextInt())%90);
 			tmpline+=String.valueOf(e);
 			tmpline+=" ";
 			tmpline+=String.valueOf(Math.abs(s-e));

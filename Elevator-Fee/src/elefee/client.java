@@ -6,6 +6,7 @@ import java.text.*;
 import javax.swing.JOptionPane;
 public class client {
 	public static int swift;//流水号！！
+	public static use eleuse=new use(0,0,"","",0,0,0);
 	public static void main(String[] args) throws IOException,SQLException,ClassNotFoundException{
 		swift=readswift();//获取流水号
 		int inputtype;//if 0  :input by txt..if 1  :input by interface..if -1 :quit..
@@ -46,9 +47,9 @@ public class client {
 		      //System.out.println(tmpline[counter]);
 		      start=Integer.parseInt(tmpline[4]);
 		      end=Integer.parseInt(tmpline[5]);
-		      use bytxt=new use(Integer.parseInt(tmpline[0]),Integer.parseInt(tmpline[1]),
+		      eleuse.setall(Integer.parseInt(tmpline[0]),Integer.parseInt(tmpline[1]),
 		    		  tmpline[2],tmpline[3],start,end,Math.abs(start-end));
-		      bytxt.send();
+		      eleuse.send();
 		      data=br.readLine(); //接着读下一行
 		}
 		br.close();
@@ -69,8 +70,8 @@ public class client {
 		endlevel=Integer.parseInt(tmp);
 		int elenum=1;
 		int uselevel=Math.abs(startlevel-endlevel);
-		use byui=new use(elenum,swift,userid,usetime,startlevel,endlevel,uselevel);
-		byui.send();
+		eleuse.setall(elenum,swift,userid,usetime,startlevel,endlevel,uselevel);
+		eleuse.send();
 		swift++;
 	}
 	public static int readswift() throws IOException{

@@ -16,6 +16,14 @@ public class use {
 		this.endlevel=endlevel;
 		this.uselevel=uselevel;
 	}
+	public void setall(int elenum,int flow,String userid,String usetime,int startlevel,int endlevel,int uselevel){
+		this.flow=flow;
+		this.userid=userid;
+		this.usetime=usetime;
+		this.startlevel=startlevel;
+		this.endlevel=endlevel;
+		this.uselevel=uselevel;
+	}
 	int getelenum(){return this.elenum;}
 	int getflow(){return this.flow;}
 	String getuserid(){return this.userid;}
@@ -40,6 +48,7 @@ public class use {
 		pst.setInt(6,this.endlevel);
 		pst.setInt(7,this.uselevel);
 		pst.executeUpdate();
-		System.out.println("send to database! swift:"+this.flow+"\n");
+		pst.close();
+		link.close();
 	}
 }
