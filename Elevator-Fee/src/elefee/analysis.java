@@ -39,7 +39,7 @@ public class analysis{
 		System.out.println("---------Total use is "+s+"---------\n");
 		for(i=0;i<4;i++){
 			System.out.printf("%8s use "+count[i]+" levels. Rate is %.2f",user[i],(count[i]/(s*0.01)));
-			System.out.println("%!\n---------use rank is "+rank[i]+" of 4 !\n");
+			System.out.println("%!\n         use rank is "+rank[i]+" of 4 !\n");
 		}
 		
 	}
