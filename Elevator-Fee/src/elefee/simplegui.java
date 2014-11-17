@@ -2,9 +2,13 @@ package elefee;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import javax.swing.*;
 public class simplegui {
 	public static void main(String[] args) throws IOException,SQLException,ClassNotFoundException{
@@ -22,7 +26,6 @@ public class simplegui {
 @SuppressWarnings("serial")
 class TextComponentFrame extends JFrame{
 	public static int swift;//Á÷Ë®ºÅ£¡£¡
-	public static use eleuse=new use(0,0,"","",0,0,0);
 	public String[] info=new String[3];
 	public static final int TEXTAREA_ROWS=10;
 	public static final int TEXTAREA_COLUMNS=30;
@@ -72,9 +75,8 @@ class TextComponentFrame extends JFrame{
 					endlevel=Integer.parseInt(info[2]);
 					int elenum=1;
 					int uselevel=Math.abs(startlevel-endlevel);
-					eleuse.setall(elenum,swift,userid,usetime,startlevel,endlevel,uselevel);
 					try{
-						eleuse.send();
+						send(elenum,swift,userid,usetime,startlevel,endlevel,uselevel);
 					}catch(ClassNotFoundException e1){
 						e1.printStackTrace();
 					}catch(SQLException e1){
@@ -105,5 +107,26 @@ class TextComponentFrame extends JFrame{
 		FileWriter fw=new FileWriter(f);
 		fw.write(String.valueOf(swift));
 		fw.close();
+	}
+	public static void send(int elenum,int flow,String userid,String usetime,int startlevel,
+			int endlevel,int uselevel) throws SQLException,ClassNotFoundException{
+		String url="jdbc:mysql://localhost:3306/eledb";
+		String account="root";
+		String password="19940427open";
+		Connection link;
+		Class.forName("com.mysql.jdbc.Driver");
+		link=DriverManager.getConnection(url,account,password);
+		String sql="insert into eleuse values (?,?,?,?,?,?,?)";
+		PreparedStatement pst=link.prepareStatement(sql);
+		pst.setInt(1,elenum);
+		pst.setInt(2,flow);
+		pst.setString(3,userid);
+		pst.setString(4,usetime);
+		pst.setInt(5,startlevel);
+		pst.setInt(6,endlevel);
+		pst.setInt(7,uselevel);
+		pst.executeUpdate();
+		pst.close();
+		link.close();
 	}
 }
