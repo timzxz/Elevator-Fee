@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.*;
-
 import javax.swing.JOptionPane;
 public class client {
 	public static int txtswift,uiswift,ele;//Á÷Ë®ºÅ£¡£¡µçÌÝ±àºÅ
