@@ -161,8 +161,16 @@ public class normalinput {
 		fw.write(info);
 		fw.close();
 	}
-	public static int updatebuf(String str){
+	public static int updatebuf(String str) throws IOException{
 		int i;
+		for(i=0;i<20;i++){
+			if(i_buf[i][0]==1&&s_buf[i].equals(str)){
+				System.out.println(str+" OUT !");
+				i_buf[i][2]=getlevel();
+				i_buf[i][0]=0;
+				return i;
+			}
+		}
 		for(i=0;i<20;i++){
 			if(i_buf[i][0]==0){
 				System.out.println(str+" IN !");
@@ -171,16 +179,14 @@ public class normalinput {
 				i_buf[i][0]=1;
 				return -1;
 			}
-			if(i_buf[i][0]==1&&s_buf[i].equals(str)){
-				System.out.println(str+" OUT !");
-				i_buf[i][2]=getlevel();
-				i_buf[i][0]=0;
-				return i;
-			}
 		}
 		return -1;
 	}
-	public static int getlevel(){
-		return Math.abs(r.nextInt()%80);
+	public static int getlevel() throws IOException{
+		//return Math.abs(r.nextInt()%80);
+		System.out.print("Level:");
+		BufferedReader strin=new BufferedReader(new InputStreamReader(System.in));
+		String input=strin.readLine();
+		return Integer.parseInt(input);
 	}
 }
