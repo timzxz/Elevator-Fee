@@ -20,14 +20,14 @@ public class pair {
 	public static int i_buf[][]=new int[100][3];//i_buf[][0]为标志位，i_buf[][1]为入层，i_buf[][2]为出层
 	public static Random r=new Random(100);
 	public static void main(String[] args) throws IOException,SQLException,ClassNotFoundException{
-		swift=readswift(9);//获取流水号
-		dblength=getdbinfo();
+//		swift=readswift(9);//获取流水号
+//		dblength=getdbinfo();
 		rclength=getrcinfo();
-		match();
-		writeswift(swiftupdate(9,swift));//默认在9号电梯进行。
+//		match();
+//		writeswift(swiftupdate(9,swift));//默认在9号电梯进行。
 		
 	}
-	public static int getdbinfo() throws SQLException,ClassNotFoundException{
+	public static int getdbinfo() throws SQLException,ClassNotFoundException{//获取临时使用信息
 		int i=0;
 		String url="jdbc:mysql://localhost:3306/eledb";
 		String account="root";
@@ -39,21 +39,23 @@ public class pair {
 		String sql="select * from tmpuse;";
 		PreparedStatement pst=link.prepareStatement(sql);
 		result=pst.executeQuery();
+		System.out.println("------tmpuse info");
 		while(result.next()){
 			dbuser[i]=result.getString(2);
-			//System.out.println(dbuser[i]);
+			System.out.println(dbuser[i]);
 			dbtime[i]=result.getString(3);
-			//System.out.println(dbtime[i]);
+			System.out.println(dbtime[i]);
 			i++;
 		}
 		link.close();
 		//System.out.println(i);
 		return i;
 	}
-	public static int getrcinfo() throws IOException{
+	public static int getrcinfo() throws IOException{//获取记录的高度信息
 		int head,i=0,flag=0;
 		String tmp="";
 		FileReader fr=new FileReader("output.txt");
+		System.out.println("in record");
 		while((head=fr.read())!=-1){
 			if(head!=' '&&flag==0){
 				tmp+=(char)head;

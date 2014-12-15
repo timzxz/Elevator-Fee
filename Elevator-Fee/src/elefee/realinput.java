@@ -15,7 +15,9 @@ public class realinput{
 		String userid="";
 		String usetime="";
 		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//设置日期格式
+		id=getid();
 		while(true){
+			id++;
 			input=strin.readLine();
 			if(input.equals("0")){
 				break;
@@ -23,8 +25,8 @@ public class realinput{
 			userid=check(input);
 			usetime=df.format(new Date());
 			System.out.println(userid+" SEND !");
-			tmpsend(id,userid,usetime);
-			id++;
+			tmpsend(9,userid,usetime);
+			
 		}
 	}
 	public static void tmpsend(int elenum,String userid,String usetime) throws SQLException,ClassNotFoundException{
@@ -59,6 +61,24 @@ public class realinput{
 		while(rst.next()){
 			ret=rst.getString(2);
 		}
+		return ret;
+	}
+	public static int getid() throws SQLException,ClassNotFoundException{
+		int ret=0;
+		String url="jdbc:mysql://localhost:3306/eledb";
+		String account="root";
+		String password="19940427open";
+		Connection link;
+		Class.forName("com.mysql.jdbc.Driver");
+		link=DriverManager.getConnection(url,account,password);
+		String sql="SELECT * from tmpuse where id = (SELECT max(id) FROM tmpuse);";
+		PreparedStatement pst=link.prepareStatement(sql);
+		ResultSet rst=pst.executeQuery();
+		while(rst.next()){
+			ret=rst.getInt(1);
+		}
+		pst.close();
+		link.close();
 		return ret;
 	}
 }
