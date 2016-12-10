@@ -14,7 +14,7 @@ public class realinput{
 		String input="";
 		String userid="";
 		String usetime="";
-		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//设置日期格式
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//脡猫脰脙脠脮脝脷赂帽脢陆
 		id=getid();
 		while(true){
 			id++;
@@ -31,8 +31,8 @@ public class realinput{
 	}
 	public static void tmpsend(int elenum,String userid,String usetime) throws SQLException,ClassNotFoundException{
 		String url="jdbc:mysql://localhost:3306/eledb";
-		String account="root";
-		String password="19940427open";
+		String account="";
+		String password="";
 		Connection link;
 		Class.forName("com.mysql.jdbc.Driver");
 		link=DriverManager.getConnection(url,account,password);
@@ -49,8 +49,8 @@ public class realinput{
 	public static String check(String str)throws SQLException,ClassNotFoundException{
 		String ret="";
 		String url="jdbc:mysql://localhost:3306/eledb";
-		String account="root";
-		String password="19940427open";
+		String account="";
+		String password="";
 		Connection link;
 		Class.forName("com.mysql.jdbc.Driver");
 		link=DriverManager.getConnection(url,account,password);
@@ -66,8 +66,8 @@ public class realinput{
 	public static int getid() throws SQLException,ClassNotFoundException{
 		int ret=0;
 		String url="jdbc:mysql://localhost:3306/eledb";
-		String account="root";
-		String password="19940427open";
+		String account="";
+		String password="";
 		Connection link;
 		Class.forName("com.mysql.jdbc.Driver");
 		link=DriverManager.getConnection(url,account,password);
