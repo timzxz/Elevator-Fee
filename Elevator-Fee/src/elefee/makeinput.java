@@ -13,13 +13,13 @@ public class makeinput {
 		usernum=getuserinfo();
 		int ele=Integer.parseInt(JOptionPane.showInputDialog(null,"INPUT THE CODE FOR THE ELE",
 				"INPUT ELE NUM!",JOptionPane.QUESTION_MESSAGE));
-		swift=readswift(ele);//»ñÈ¡Á÷Ë®ºÅ
+		swift=readswift(ele);//è·å–æµæ°´å·
 		int line=Integer.parseInt(JOptionPane.showInputDialog(null,"ELE make LINE",
 				"NOW LINE",JOptionPane.QUESTION_MESSAGE));
 		int i,s,e;
 		Random r=new Random(100);
 		String tmpline="";
-		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//ÉèÖÃÈÕÆÚ¸ñÊ½
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//è®¾ç½®æ—¥æœŸæ ¼å¼
 		File f=new File("input.txt");
 		FileWriter fw=new FileWriter(f);
 		for(i=1;i<=line;i++){
@@ -129,8 +129,8 @@ public class makeinput {
 	public static int getuserinfo() throws SQLException,ClassNotFoundException{
 		int ret=0;
 		String url="jdbc:mysql://localhost:3306/eledb";
-		String account="root";
-		String password="19940427open";
+		String account="";
+		String password="";
 		Connection link;
 		Class.forName("com.mysql.jdbc.Driver");
 		link=DriverManager.getConnection(url,account,password);
