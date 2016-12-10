@@ -15,16 +15,16 @@ public class pair {
 	public static String[] dbuser=new String[20000];
 	public static int dblength=0;
 	public static String s_buf[]=new String[100];
-	public static int i_buf[][]=new int[100][3];//i_buf[][0]Îª±êÖ¾Î»£¬i_buf[][1]ÎªÈë²ã£¬i_buf[][2]Îª³ö²ã
+	public static int i_buf[][]=new int[100][3];//i_buf[][0]ä¸ºæ ‡å¿—ä½ï¼Œi_buf[][1]ä¸ºå…¥å±‚ï¼Œi_buf[][2]ä¸ºå‡ºå±‚
 	public static Random r=new Random(100);
-	public static double[][] leveldata=new double[100][2];//leveldata[][0]ÎªÏÂ½ç£¬leveldata[][1]ÎªÏÂ½ç
+	public static double[][] leveldata=new double[100][2];//leveldata[][0]ä¸ºä¸‹ç•Œï¼Œleveldata[][1]ä¸ºä¸‹ç•Œ
 	public static void main(String[] args) throws IOException,SQLException,ClassNotFoundException{
 		setlevel();
-		swift=readswift(9);//»ñÈ¡Á÷Ë®ºÅ
+		swift=readswift(9);//è·å–æµæ°´å·
 		dblength=getdbinfo();
 		rclength=getrcinfo();
 		match();
-		writeswift(swiftupdate(9,swift));//Ä¬ÈÏÔÚ9ºÅµçÌİ½øĞĞ¡£
+		writeswift(swiftupdate(9,swift));//é»˜è®¤åœ¨9å·ç”µæ¢¯è¿›è¡Œã€‚
 	}
 	public static void setlevel(){
 			leveldata[1][0]=-6.4;leveldata[1][1]=-2.4;
@@ -36,11 +36,11 @@ public class pair {
 			leveldata[7][0]=20.6;leveldata[17][1]=22.8;
 			leveldata[8][0]=24.7;leveldata[8][1]=26.7;
 	}
-	public static int getdbinfo() throws SQLException,ClassNotFoundException{//»ñÈ¡ÁÙÊ±Ê¹ÓÃĞÅÏ¢
+	public static int getdbinfo() throws SQLException,ClassNotFoundException{//è·å–ä¸´æ—¶ä½¿ç”¨ä¿¡æ¯
 		int i=0;
 		String url="jdbc:mysql://localhost:3306/eledb";
-		String account="root";
-		String password="19940427open";
+		String account="";
+		String password="";
 		ResultSet result;
 		Connection link;
 		Class.forName("com.mysql.jdbc.Driver");
@@ -59,7 +59,7 @@ public class pair {
 		//System.out.println(i);
 		return i;
 	}
-	public static int getrcinfo() throws IOException{//»ñÈ¡¼ÇÂ¼µÄ¸ß¶ÈĞÅÏ¢
+	public static int getrcinfo() throws IOException{//è·å–è®°å½•çš„é«˜åº¦ä¿¡æ¯
 		int head,i=0,flag=0;
 		String tmp="";
 		FileReader fr=new FileReader("output.txt");
@@ -118,8 +118,8 @@ public class pair {
 			int endlevel) throws SQLException,ClassNotFoundException{
 		int uselevel=Math.abs(startlevel-endlevel);
 		String url="jdbc:mysql://localhost:3306/eledb";
-		String account="root";
-		String password="19940427open";
+		String account="";
+		String password="";
 		Connection link;
 		Class.forName("com.mysql.jdbc.Driver");
 		link=DriverManager.getConnection(url,account,password);
@@ -140,8 +140,8 @@ public class pair {
 	public static String check(String str) throws SQLException,ClassNotFoundException{
 		String ret="";
 		String url="jdbc:mysql://localhost:3306/eledb";
-		String account="root";
-		String password="19940427open";
+		String account="";
+		String password="";
 		Connection link;
 		Class.forName("com.mysql.jdbc.Driver");
 		link=DriverManager.getConnection(url,account,password);
