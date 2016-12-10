@@ -11,7 +11,7 @@ import java.util.Random;
 public class normalinput {
 	public static int swift;
 	public static String s_buf[]=new String[20];
-	public static int i_buf[][]=new int[20][3];//i_buf[][0]Îª±êÖ¾Î»£¬i_buf[][1]ÎªÈë²ã£¬i_buf[][2]Îª³ö²ã
+	public static int i_buf[][]=new int[20][3];//i_buf[][0]ä¸ºæ ‡å¿—ä½ï¼Œi_buf[][1]ä¸ºå…¥å±‚ï¼Œi_buf[][2]ä¸ºå‡ºå±‚
 	public static Random r=new Random(100);
 	public static void main(String[] args) throws IOException,SQLException,ClassNotFoundException{
 		int bufnum;
@@ -19,8 +19,8 @@ public class normalinput {
 		String input="";
 		String userid="";
 		String usetime="";
-		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//ÉèÖÃÈÕÆÚ¸ñÊ½
-		swift=readswift(9);//»ñÈ¡Á÷Ë®ºÅ
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//è®¾ç½®æ—¥æœŸæ ¼å¼
+		swift=readswift(9);//è·å–æµæ°´å·
 		while(true){
 			input=strin.readLine();
 			if(input.equals("0")){
@@ -35,14 +35,14 @@ public class normalinput {
 				swift++;
 			}
 		}
-		writeswift(swiftupdate(9,swift));//Ä¬ÈÏÔÚ9ºÅµçÌİ½øĞĞ¡£
+		writeswift(swiftupdate(9,swift));//é»˜è®¤åœ¨9å·ç”µæ¢¯è¿›è¡Œã€‚
 	}
 	public static void send(int elenum,int flow,String userid,String usetime,int startlevel,
 			int endlevel) throws SQLException,ClassNotFoundException{
 		int uselevel=Math.abs(startlevel-endlevel);
 		String url="jdbc:mysql://localhost:3306/eledb";
-		String account="root";
-		String password="19940427open";
+		String account="";
+		String password="";
 		Connection link;
 		Class.forName("com.mysql.jdbc.Driver");
 		link=DriverManager.getConnection(url,account,password);
@@ -63,8 +63,8 @@ public class normalinput {
 	public static String check(String str)throws SQLException,ClassNotFoundException{
 		String ret="";
 		String url="jdbc:mysql://localhost:3306/eledb";
-		String account="root";
-		String password="19940427open";
+		String account="";
+		String password="";
 		Connection link;
 		Class.forName("com.mysql.jdbc.Driver");
 		link=DriverManager.getConnection(url,account,password);
