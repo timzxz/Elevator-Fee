@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 public class setup {
 	public static void main(String[] args) throws IOException,SQLException,ClassNotFoundException{
-		//需要设置电梯数量和设置用户信息
+		//闇�瑕佽缃數姊暟閲忓拰璁剧疆鐢ㄦ埛淇℃伅
 		int inputtype;
 		inputtype=Integer.parseInt(JOptionPane.showInputDialog(null,"1:Set Ele  0:Set User",
 				"INPUT TYPE!",JOptionPane.QUESTION_MESSAGE));
@@ -44,8 +44,8 @@ public class setup {
 		type=Integer.parseInt(JOptionPane.showInputDialog(null,"1:ADD  0:CLEAN  -1:DELETE",
 				"SELECT FUNC",JOptionPane.QUESTION_MESSAGE));
 		String url="jdbc:mysql://localhost:3306/eledb";
-		String account="root";
-		String password="19940427open";
+		String account="";
+		String password="";
 		Connection link;
 		Class.forName("com.mysql.jdbc.Driver");
 		link=DriverManager.getConnection(url,account,password);
