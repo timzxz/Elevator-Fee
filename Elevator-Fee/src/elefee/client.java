@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.text.*;
 import javax.swing.JOptionPane;
 public class client {
-	public static int txtswift,uiswift,ele;//Á÷Ë®ºÅ£¡£¡µçÌİ±àºÅ
+	public static int txtswift,uiswift,ele;//æµæ°´å·ï¼ï¼ç”µæ¢¯ç¼–å·
 	public static void main(String[] args) throws IOException,SQLException,ClassNotFoundException{
 		int inputtype,flag=0;//if 0  :input by txt..if 1  :input by interface..if -1 :quit..
 		for(;;){
@@ -19,7 +19,7 @@ public class client {
 				if(flag==0){
 					ele=Integer.parseInt(JOptionPane.showInputDialog(null,"INPUT ELE NUM!",
 					"INPUT THE CODE FOR THE ELE",JOptionPane.QUESTION_MESSAGE));
-					uiswift=readswift(ele);//»ñÈ¡Á÷Ë®ºÅ
+					uiswift=readswift(ele);//è·å–æµæ°´å·
 					flag=1;
 				}
 				uiinput();
@@ -34,7 +34,7 @@ public class client {
 		String[] tmpline=new String[7];
 		int i,counter,tmpstart,tmpend,start,end;
 		BufferedReader br=new BufferedReader(new FileReader("input.txt"));
-		String data=br.readLine();//Ò»´Î¶ÁÈëÒ»ĞĞ£¬Ö±µ½0¶ÁÈënullÎªÎÄ¼ş½áÊø  
+		String data=br.readLine();//ä¸€æ¬¡è¯»å…¥ä¸€è¡Œï¼Œç›´åˆ°0è¯»å…¥nullä¸ºæ–‡ä»¶ç»“æŸ  
 		while(data!=null){
 		      tmpstart=0;
 		      tmpend=0;
@@ -59,7 +59,7 @@ public class client {
 		      end=Integer.parseInt(tmpline[5]);
 		      send(Integer.parseInt(tmpline[0]),Integer.parseInt(tmpline[1]),
 		    		  tmpline[2],tmpline[3],start,end,Math.abs(start-end));
-		      data=br.readLine(); //½Ó×Å¶ÁÏÂÒ»ĞĞ
+		      data=br.readLine(); //æ¥ç€è¯»ä¸‹ä¸€è¡Œ
 		}
 		br.close();
 		txtswift=Integer.parseInt(tmpline[1])+1;
@@ -71,7 +71,7 @@ public class client {
 		int endlevel=0;
 		String userid="";
 		String usetime="";
-		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//ÉèÖÃÈÕÆÚ¸ñÊ½
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//è®¾ç½®æ—¥æœŸæ ¼å¼
 		usetime=df.format(new Date());
 		userid=JOptionPane.showInputDialog(null, "please input the userid", "ELE INPUT:1 OF 3",JOptionPane.QUESTION_MESSAGE);
 		tmp=JOptionPane.showInputDialog(null, "please input the start level", "ELE INPUT:2 OF 3",JOptionPane.QUESTION_MESSAGE);
@@ -164,8 +164,8 @@ public class client {
 	public static void send(int elenum,int flow,String userid,String usetime,int startlevel,
 						int endlevel,int uselevel) throws SQLException,ClassNotFoundException{
 		String url="jdbc:mysql://localhost:3306/eledb";
-		String account="root";
-		String password="19940427open";
+		String account="";
+		String password="";
 		Connection link;
 		Class.forName("com.mysql.jdbc.Driver");
 		link=DriverManager.getConnection(url,account,password);
